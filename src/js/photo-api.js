@@ -12,7 +12,7 @@ export default {
             .then(({ hits }) => {
                 this.incrementPage();
                 return hits;
-             })
+            })
             .catch(error => console.log(error));
 
     },
@@ -41,4 +41,4 @@ export default {
 
     
 
-}
+};

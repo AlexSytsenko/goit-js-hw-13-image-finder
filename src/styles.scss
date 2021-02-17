@@ -84,3 +84,31 @@ body {
   // height: auto;
   aspect-ratio: 4 / 3;
 }
+
+
+
+
+
+
+
+/////////@at-root
+.button {
+
+  padding: 10px 20px;
+  font-size: 14px;
+  background-color: #ccc;
+ 
+}
+
+.button.is-hidden {
+  display: none;
+}
+
+
+.spinner {
+
+}
+
+.spinner.is-hidden {
+  display: none;
+}
