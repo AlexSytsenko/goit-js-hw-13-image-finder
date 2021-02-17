@@ -1,30 +1,56 @@
 import './styles.scss';
+import photoApi from './js/photo-api';
 import templateImg from './templates/template-img.hbs';
+import 'material-design-icons/iconfont/material-icons.css';
 
 
 
 const refs = {
+    searchForm: document.getElementById('search-form'),
     gallery: document.querySelector('.gallery'),
 };
 
-const apiKey = "20059079-3862fc9514b48e56c5e47271f";
-const query = "cat";
-const url = `https://pixabay.com/api/?key=${apiKey}&q=${query}&image_type=photo&orientation=horizontal&page=1&per_page=12`;
-
-// const url = `https://pixabay.com/api/?image_type=photo&orientation=horizontal&q=${query}&page=1&per_page=3&key=${apiKey}`;
-
-fetch(url)
-    .then(response => response.json())
-    .then(({ hits }) => createMarkup(hits))
-    .catch(error => console.log(error));
 
 
 
+refs.searchForm.addEventListener('submit', searchFormSubmitHandler);
 
-function createMarkup(arr) {
+function searchFormSubmitHandler(event) {
+    event.preventDefault();
+    const form = event.currentTarget;
 
-    console.log(arr);
-    const markup = templateImg(arr);
+    photoApi.query = form.elements.query.value;
+
+    photoApi.resetPage();
+    clearMarkup();
+
+
+    fetchPhotos();
+
+    // console.log(event.currentTarget);
+    // const form = event.currentTarget;
+    // newsApi.query = form.elements.query.value;
+}
+
+function fetchPhotos() {
+    
+    photoApi
+        .fetchPhotos()
+        .then(hits => {
+            createMarkup(hits);
+        });
+}
+
+
+
+
+
+function createMarkup(array) {
+    const markup = templateImg(array);
 
     refs.gallery.insertAdjacentHTML('beforeend', markup);
+}
+
+function clearMarkup() {
+    refs.gallery.innerHTML = '';
 }
