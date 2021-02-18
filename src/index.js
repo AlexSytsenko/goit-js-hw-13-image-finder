@@ -9,16 +9,13 @@ const refs = {
     searchForm: document.getElementById('search-form'),
     gallery: document.querySelector('.gallery'),
     loadMoreBtn: document.querySelector('[data-action="load-more"]'),
-    spinner: document.querySelector('.spinner'),
+    loadMoreBtnLabel: document.querySelector('button > .label'),
+    loadMoreBtnSpinner: document.querySelector('button > .spinner'),
 };
-
-
 
 
 refs.searchForm.addEventListener('submit', searchFormSubmitHandler);
 refs.loadMoreBtn.addEventListener('click', loadMoreBtnHandler);
-
-
 
 
 function searchFormSubmitHandler(event) {
@@ -27,8 +24,6 @@ function searchFormSubmitHandler(event) {
 
     photoApi.query = form.elements.query.value;
 
-    refs.loadMoreBtn.classList.add('is-hidden');//может перенести в  fetchPhotos???
-    refs.spinner.classList.remove('is-hidden');
 
     photoApi.resetPage();
     clearMarkup();
@@ -42,27 +37,31 @@ function searchFormSubmitHandler(event) {
 }
 
 function fetchPhotos() {
+
+    refs.loadMoreBtn.disabled = true;
+    refs.loadMoreBtnLabel.textContent = 'Loading...';
+    refs.loadMoreBtnSpinner.classList.remove('is-hidden');
     
     photoApi
         .fetchPhotos()
         .then(hits => {
             updateMarkup(hits);
-            refs.loadMoreBtn.classList.remove('is-hidden');
+            refs.loadMoreBtn.disabled = false;
+            refs.loadMoreBtnLabel.textContent = 'Load more...';
+            refs.loadMoreBtnSpinner.classList.add('is-hidden');
 
             window.scrollTo({
-                top: 1000000000000,
+                top: document.documentElement.offsetHeight,
                 behavior: 'smooth'
             });
             
         })
         .finally(() => {
-            refs.spinner.classList.add('is-hidden');
+            // refs.spinner.classList.add('is-hidden');
         });
     
     
 }
-
-
 
 
 
@@ -79,7 +78,7 @@ function clearMarkup() {
 
 function loadMoreBtnHandler() {
 
-    refs.spinner.classList.remove('is-hidden');
+    // refs.spinner.classList.remove('is-hidden');
     
     photoApi.incrementPage();
     fetchPhotos();

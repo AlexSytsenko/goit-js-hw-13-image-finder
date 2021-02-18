@@ -93,9 +93,13 @@ body {
 
 /////////@at-root
 .button {
-
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
   padding: 10px 20px;
   font-size: 14px;
+  border: 2px solid rgb(80, 94, 77);
+  border-radius: 10px;
   background-color: #ccc;
  
 }
