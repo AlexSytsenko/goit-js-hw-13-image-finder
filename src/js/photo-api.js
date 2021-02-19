@@ -1,3 +1,6 @@
+import { successNotice, infoNotice, errorNotice } from '../js/notifications';
+
+
 const apiKey = "20059079-3862fc9514b48e56c5e47271f";
 
 export default {
@@ -10,8 +13,14 @@ export default {
         return fetch(url)
             .then(response => response.json())
             .then(({ hits }) => {
+                if (hits.length > 0) { 
+                successNotice();  
                 this.incrementPage();
-                return hits;
+                return hits;  
+                }
+                else {
+                    infoNotice();
+                }
             })
             .catch(error => console.log(error));
 

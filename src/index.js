@@ -3,6 +3,7 @@ import photoApi from './js/photo-api';
 import refs from './js/refs';
 import LoadMoreBtn from './js/components/load-more-btn';
 import pictureHandler from './js/lightbox';
+
 import templateImg from './templates/template-img.hbs';
 import 'material-design-icons/iconfont/material-icons.css';
 
@@ -52,6 +53,8 @@ function fetchPhotos() {
             updatePhotosMarkup(hits);
             loadMoreBtn.show();
             loadMoreBtn.enable();
+            
+            
 
             window.scrollTo({
                 top: document.documentElement.offsetHeight,
