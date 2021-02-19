@@ -19,7 +19,7 @@ export default {
                 return hits;  
                 }
                 else {
-                    infoNotice();
+                    errorNotice();
                 }
             })
             .catch(error => console.log(error));

@@ -39,6 +39,7 @@ function searchFormSubmitHandler(event) {
     fetchPhotos();
 
 
+
     // console.log(event.currentTarget);
     // const form = event.currentTarget;
     // newsApi.query = form.elements.query.value;
@@ -51,9 +52,15 @@ function fetchPhotos() {
         .fetchPhotos()
         .then(hits => {
             updatePhotosMarkup(hits);
-            loadMoreBtn.show();
-            loadMoreBtn.enable();
+
+            if (refs.gallery.innerHTML === '') {
+                loadMoreBtn.hide();
+            } else {
+                loadMoreBtn.show();
+                loadMoreBtn.enable();
+            }
             
+    
             
 
             window.scrollTo({
