@@ -2,8 +2,18 @@ import './styles.scss';
 import photoApi from './js/photo-api';
 import refs from './js/refs';
 import LoadMoreBtn from './js/components/load-more-btn';
+import pictureHandler from './js/lightbox';
 import templateImg from './templates/template-img.hbs';
 import 'material-design-icons/iconfont/material-icons.css';
+
+
+
+
+// const existingInstance = basicLightbox.create(document.querySelector('.picture'));
+
+// document.querySelector('picture').onclick = existingInstance.show;
+
+
 
 
 const loadMoreBtn = new LoadMoreBtn({
@@ -14,6 +24,7 @@ const loadMoreBtn = new LoadMoreBtn({
 
 refs.searchForm.addEventListener('submit', searchFormSubmitHandler);
 loadMoreBtn.refs.button.addEventListener('click', loadMoreBtnHandler);
+refs.gallery.addEventListener('click', pictureHandler);
 
 
 function searchFormSubmitHandler(event) {
@@ -25,6 +36,7 @@ function searchFormSubmitHandler(event) {
     photoApi.resetPage();
     clearPhotosMarkup();
     fetchPhotos();
+
 
     // console.log(event.currentTarget);
     // const form = event.currentTarget;
@@ -54,8 +66,7 @@ function fetchPhotos() {
 function updatePhotosMarkup(array) {
     const markup = templateImg(array);
 
-    refs.gallery.insertAdjacentHTML('beforeend', markup);
-    
+    refs.gallery.insertAdjacentHTML('beforeend', markup);    
 }
 
 function clearPhotosMarkup() {
