@@ -8,10 +8,11 @@ function pictureHandler(event) {
     return;
   }
     const imageRef = event.target;
-    const largeImageURL = imageRef.dataset.source;
+  const largeImageURL = imageRef.dataset.source;
+  const alt = imageRef.alt;
     
     basicLightbox.create(`
-		<img src=${largeImageURL}>
+		<img src="${largeImageURL}" alt="${alt}">
     `).show();
 
 }
