@@ -1,5 +1,4 @@
-import { successNotice, infoNotice, errorNotice } from '../js/notifications';
-
+import { successNotice, errorNotice } from '../js/notifications';
 
 const apiKey = "20059079-3862fc9514b48e56c5e47271f";
 
@@ -23,7 +22,6 @@ export default {
                 }
             })
             .catch(error => console.log(error));
-
     },
 
     resetPage() {
@@ -41,13 +39,5 @@ export default {
     set query(value) {
         this.searchQuery = value;
     },
-    
-
-
-
-    
-
-
-    
 
 };

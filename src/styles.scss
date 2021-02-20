@@ -66,9 +66,9 @@ body {
 
 .stats {
   display: flex;
-
   align-items: flex-end;
   justify-content: space-around;
+  color: rgb(146, 146, 146);
 }
 
 .stats-item {
@@ -76,7 +76,7 @@ body {
 }
 
 .material-icons {
-  margin-right: 10px;
+  margin-right: 5px;
 }
 
 .photo-card img {
@@ -108,11 +108,6 @@ body {
 .button.is-hidden {
   display: none;
 }
-
-
-// .spinner {
-
-// }
 
 .spinner.is-hidden {
   display: none;

@@ -37,6 +37,7 @@ export default class LoadMoreBtn {
     }
 }
 
+// loadMoreBtn - Object!
 
 // const loadMoreBtn = {
 
