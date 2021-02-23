@@ -6,6 +6,12 @@ import LoadMoreBtn from './js/components/load-more-btn';
 import pictureHandler from './js/lightbox';
 import 'material-design-icons/iconfont/material-icons.css';
 
+
+import { handleScroll, scrollToTop, scrollToTopBtn } from './js/button-to-top';
+
+
+
+
 const loadMoreBtn = new LoadMoreBtn({
     selector: '[data-action="load-more"]',
     hidden: true
@@ -36,10 +42,11 @@ function fetchPhotos() {
                 loadMoreBtn.enable();
             }
         
-            window.scrollTo({
-                top: document.documentElement.offsetHeight,
+            window.scrollBy({
+                top: document.documentElement.clientHeight,
                 behavior: 'smooth'
             });
+            console.dir(document.documentElement);
         });
 }
 
@@ -53,3 +60,4 @@ function loadMoreBtnHandler() {
 refs.searchForm.addEventListener('submit', searchFormSubmitHandler);
 loadMoreBtn.refs.button.addEventListener('click', loadMoreBtnHandler);
 refs.gallery.addEventListener('click', pictureHandler);
+

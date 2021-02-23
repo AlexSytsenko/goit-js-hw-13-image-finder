@@ -66,7 +66,7 @@ body {
 
 
 .photo-card {
-   box-shadow: 10px 10px 10px 10px rgba(68, 66, 66, 0.1); 
+   box-shadow: 0px 5px 5px 0px rgba(68, 66, 66, 0.1); 
    border-radius: 10px;
   overflow: hidden;
 }
@@ -133,3 +133,39 @@ body {
 .spinner.is-hidden {
   display: none;
 }
+
+
+.btn__to__top {
+   position: absolute;
+   position: fixed;
+   bottom: 50px;
+   right: 50px;
+  display: block;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color:  rgb(221, 241, 228);
+  border: 2px solid black;
+  opacity: 0.5;
+  transition: 500ms;
+}
+
+.btn__to__top::after {
+   content: '\21E7';
+   color: rgb(0, 0, 0);
+   font-family: FontAwesome;
+    font-weight: 600;
+  font-style: normal;
+  font-size: 2em;
+  line-height: 30px;
+}
+
+.btn__to__top:hover {
+  transform: scale(1.1);
+  
+}
+
+.btn__to__top.is-hidden {
+  display: none;
+}
+
