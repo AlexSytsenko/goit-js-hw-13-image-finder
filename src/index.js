@@ -1,14 +1,11 @@
 import './styles.scss';
 import photoApi from './js/photo-api';
 import refs from './js/refs';
+import { handleScroll, scrollToTop } from './js/button-to-top';
 import { updatePhotosMarkup, clearPhotosMarkup } from './js/markup';
 import LoadMoreBtn from './js/components/load-more-btn';
 import pictureHandler from './js/lightbox';
 import 'material-design-icons/iconfont/material-icons.css';
-
-
-import { handleScroll, scrollToTop, scrollToTopBtn } from './js/button-to-top';
-
 
 
 
@@ -46,7 +43,6 @@ function fetchPhotos() {
                 top: document.documentElement.clientHeight,
                 behavior: 'smooth'
             });
-            console.dir(document.documentElement);
         });
 }
 
@@ -60,4 +56,6 @@ function loadMoreBtnHandler() {
 refs.searchForm.addEventListener('submit', searchFormSubmitHandler);
 loadMoreBtn.refs.button.addEventListener('click', loadMoreBtnHandler);
 refs.gallery.addEventListener('click', pictureHandler);
+refs.scrollToTopBtn.addEventListener("click", scrollToTop);
+document.addEventListener("scroll", handleScroll);
 
