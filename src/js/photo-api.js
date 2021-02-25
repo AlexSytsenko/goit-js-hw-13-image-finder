@@ -13,7 +13,7 @@ export default {
             .then(response => response.json())
             .then(({ hits }) => {
                 if (hits.length > 0) { 
-                successNotice();  
+                // successNotice();  
                 this.incrementPage();
                 return hits;  
                 }
