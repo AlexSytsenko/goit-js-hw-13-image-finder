@@ -17,7 +17,6 @@ export default {
             .then(({ data: {hits} }) => {
                 
                 if (hits.length > 0) {
-                    successNotice();
                     this.incrementPage();
                     return hits;
                 } else {
