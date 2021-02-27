@@ -1,6 +1,7 @@
 import refs from './refs';
 
 
+
 let rootElement = document.documentElement;
 
 function handleScroll() {
