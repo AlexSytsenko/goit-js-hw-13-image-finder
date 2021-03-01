@@ -6,22 +6,42 @@ export default {
     searchQuery: '',
     page: 1,
 
-    fetchPhotos() {
+   async fetchPhotos() {
         const url = `https://pixabay.com/api/?key=${apiKey}&q=${this.searchQuery}&image_type=photo&orientation=horizontal&page=${this.page}&per_page=12`;
 
-        return fetch(url)
-            .then(response => response.json())
-            .then(({ hits }) => {
-                if (hits.length > 0) { 
-                successNotice();  
+       try {
+           const request = await fetch(url);
+           const response = await request.json();
+
+           const { hits } = response;
+
+           if (hits.length > 0) { 
+                 successNotice();  
                 this.incrementPage();
                 return hits;  
                 }
                 else {
-                    errorNotice();
-                }
-            })
-            .catch(error => console.log(error));
+                   errorNotice();
+            }
+
+       } catch (error) {
+           throw error;
+       }
+       
+
+        // return fetch(url)
+        //     .then(response => response.json())
+        //     .then(({ hits }) => {
+        //         if (hits.length > 0) { 
+        //         successNotice();  
+        //         this.incrementPage();
+        //         return hits;  
+        //         }
+        //         else {
+        //             errorNotice();
+        //         }
+        //     })
+        //     .catch(error => console.log(error));
     },
 
     resetPage() {

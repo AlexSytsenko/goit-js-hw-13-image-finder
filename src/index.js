@@ -43,7 +43,8 @@ function fetchPhotos() {
                 top: document.documentElement.clientHeight,
                 behavior: 'smooth'
             });
-        });
+        })
+        .catch(error => console.log(error));
 }
 
 function loadMoreBtnHandler() {
