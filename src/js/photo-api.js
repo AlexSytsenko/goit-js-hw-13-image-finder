@@ -1,4 +1,5 @@
 import { successNotice, errorNotice } from '../js/notifications';
+import axios from 'axios';
 
 const apiKey = "20059079-3862fc9514b48e56c5e47271f";
 
@@ -10,10 +11,10 @@ export default {
         const url = `https://pixabay.com/api/?key=${apiKey}&q=${this.searchQuery}&image_type=photo&orientation=horizontal&page=${this.page}&per_page=12`;
 
        try {
-           const request = await fetch(url);
-           const response = await request.json();
-
-           const { hits } = response;
+           const { data: { hits } } = await axios.get(url);
+           
+           console.log(hits);
+           
 
            if (hits.length > 0) { 
                  successNotice();  

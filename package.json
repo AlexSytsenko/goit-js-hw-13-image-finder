@@ -36,6 +36,7 @@
     "html-webpack-plugin": "^4.5.0",
     "img-loader": "^3.0.2",
     "mini-css-extract-plugin": "^0.11.2",
+    "node": "14.16",
     "node-sass": "^4.14.1",
     "optimize-css-assets-webpack-plugin": "^5.0.4",
     "postcss-loader": "^4.0.2",
@@ -49,10 +50,12 @@
     "webpackbar": "^4.0.0"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "basiclightbox": "^5.0.4",
     "core-js": "^3.6.5",
     "handlebars": "^4.7.6",
     "material-design-icons": "^3.0.1",
-    "pnotify": "^5.2.0"
+    "pnotify": "^5.2.0",
+    "throttle-debounce": "^3.0.1"
   }
 }
